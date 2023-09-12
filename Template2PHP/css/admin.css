@@ -1,0 +1,116 @@
+/* sidebar */
+.sidebar{
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: gray;
+    overflow-x: hidden;
+    padding-top: 60px;
+    transition: 0.5s;
+}
+#openAdmin {
+    position: fixed; /* Added */
+    z-index: 2; /* Added */
+    top: 10px; /* Added */
+    left: 10px; /* Added */
+}
+.sidebar a{
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 22px;
+    color: #fff;
+    display: block;
+    transition: 0.3s;
+}
+
+.sidebar .side-header{
+    margin-left: 30px;
+    margin-bottom: 8px;
+    color: #000000;
+}
+
+.sidebar a:hover{
+    background-color: #584e46;
+}
+
+.sidebar .closebtn{
+    position: absolute;
+    top: 0;
+    right: 2px;
+    font-size: 34px;
+    margin-left: 50px;
+}
+
+.openbtn{
+    font-size: 20px;
+    cursor: pointer;
+    padding: 10px 15px;
+    border: none;
+    color: #fff;
+    background-color: gray;
+}
+
+.openbtn:hover{
+    color: #ECDAC9;
+}
+
+ /* Style page content - use this if you want to push the page content to the right when you open the side navigation */
+#main-content {
+  transition: margin-left .5s; /* If you want a transition effect */
+  padding: 20px;
+  padding-top: 60px;
+}
+
+
+/* Dashboard */
+.dashboard{
+    background-color: #3B3131;
+    padding: 20px;
+    margin: 10px;
+    border-radius: 10px;
+    box-shadow: 8px 5px 5px #3B3131;
+}
+
+.center{
+    text-align: center;
+    width: 100%;
+}
+
+/* table */
+ table {
+    width: 100%;
+    border-collapse: collapse;
+    border-spacing: 0;
+    box-shadow: 0 2px 15px rgba(64, 64, 64, .7);
+    border-radius: 12px 12px 0 0;
+    margin-bottom: 50px;
+  }
+
+  td,
+  th {
+    padding: 10px 16px;
+    text-align: center;
+  }
+
+  th {
+    background-color: #584e46;
+    color: #fafafa;
+    font-family: 'Open Sans', Sans-serif;
+    font-weight: bold;
+  }
+
+  tr {
+    width: 100%;
+    background-color: #fafafa;
+    font-family: 'Montserrat', sans-serif;
+  }
+
+  tr:nth-child(even) {
+    background-color: #eeeeee;
+  }
+  .btn-success{
+        color: #000000;
+    }

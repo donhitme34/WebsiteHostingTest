@@ -1,0 +1,40 @@
+/* Your custom styles */
+.editable-input {
+    border: 1px solid #ced4da;
+    background-color: #f8f9fa;
+    border-radius: 3px;
+    padding: 2px 5px;
+}
+.password-input {
+    border: 1px solid #ced4da !important;
+    background-color: #f8f9fa !important;
+    border-radius: 3px !important;
+    padding: 2px 5px !important;
+    display: block !important;
+    width: 100% !important;
+    height: calc(1.5em + .75rem + 2px) !important;
+    font-size: 1rem !important;
+    line-height: 1.5 !important;
+    color: #495057 !important;
+}
+.eye-icon {
+    cursor: pointer;
+    position: absolute;
+    right: 10px;
+    top: 70%;
+    transform: translateY(-50%);
+    font-size: 1.2rem;
+}
+.container-bg {
+    background: #ECECEC;
+}
+input[type="checkbox"] {
+    -webkit-appearance: checkbox;
+    -moz-appearance: checkbox;
+    appearance: checkbox;
+    display: inline-block;
+    width: auto;
+}
+p{
+    color:black;
+}
