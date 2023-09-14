@@ -9,7 +9,7 @@ if (!isset($_SESSION['user']) || $_SESSION["user"] != true) {
 if (isset($_GET['idproduct'])) {
     $itemCode = $_GET['idproduct'];
 
-    $config = parse_ini_file('../../private/db-config.ini');
+    $config = parse_ini_file('../private/db-config.ini');
     $conn = new mysqli($config['servername'], $config['username'],
             $config['password'], $config['dbname']);
 

@@ -5,7 +5,7 @@
     include 'header.php';
     if (isset($_SESSION['user']) && $_SESSION["user"] == true) {
         global $email,$address, $wallet;
-        $config = parse_ini_file('../../private/db-config.ini');
+        $config = parse_ini_file('../private/db-config.ini');
         $conn = new mysqli($config['servername'], $config['username'],
                 $config['password'], $config['dbname']);
         // Check connection

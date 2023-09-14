@@ -88,7 +88,7 @@ function wallet_Deposit() {
     $ewalletCredit = 0.0;
 
     // Create database connection.
-    $config = parse_ini_file('../../private/db-config.ini');
+    $config = parse_ini_file('../private/db-config.ini');
     $conn = new mysqli($config['servername'], $config['username'],
             $config['password'], $config['dbname'], 3306);
     // Check connection

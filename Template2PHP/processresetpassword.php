@@ -63,7 +63,7 @@
         session_write_close();
         $success=true;
         global $password_hash,$email, $password;
-        $config = parse_ini_file('../../private/db-config.ini');
+        $config = parse_ini_file('../private/db-config.ini');
         $conn = new mysqli($config['servername'], $config['username'],
                 $config['password'], $config['dbname']);
         // Check connection
@@ -83,7 +83,7 @@
         }
         $conn->close();
 
-        $config = parse_ini_file('../../private/db-config.ini');
+        $config = parse_ini_file('../private/db-config.ini');
         $conn = new mysqli($config['servername'], $config['username'],
                 $config['password'], $config['dbname']);
         // Check connection
@@ -131,7 +131,7 @@
             } else {
                 echo "Message could not be sent. Mailer Error: " . $mail->ErrorInfo;
             }
-            $config = parse_ini_file('../../private/db-config.ini');
+            $config = parse_ini_file('../private/db-config.ini');
             $conn = new mysqli($config['servername'], $config['username'],
                     $config['password'], $config['dbname']);
             // Check connection

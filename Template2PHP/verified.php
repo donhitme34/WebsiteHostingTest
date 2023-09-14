@@ -53,7 +53,7 @@
         $pinmatch =0;
         $success = true;
         // Create database connection.
-        $config = parse_ini_file('../../private/db-config.ini');
+        $config = parse_ini_file('../private/db-config.ini');
         $conn = new mysqli($config['servername'], $config['username'],
                 $config['password'], $config['dbname']);
         // Check connection
@@ -78,7 +78,7 @@
                 // Check if the password matches:
                 if($pinmatch == $pinnumber){
                     // Create database connection.
-                    $config = parse_ini_file('../../private/db-config.ini');
+                    $config = parse_ini_file('../private/db-config.ini');
                     $conn = new mysqli($config['servername'], $config['username'],
                             $config['password'], $config['dbname']);
                     // Check connection
@@ -102,7 +102,7 @@
                     $success = false;
                     $errorMsg = "6 pin does not match!";
                     // Create database connection.
-                    $config = parse_ini_file('../../private/db-config.ini');
+                    $config = parse_ini_file('../private/db-config.ini');
                     $conn = new mysqli($config['servername'], $config['username'],
                             $config['password'], $config['dbname']);
                     // Check connection

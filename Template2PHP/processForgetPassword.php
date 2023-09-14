@@ -63,7 +63,7 @@
         if($success){
             global $email, $userI, $counter;
             $counter=0;
-            $config = parse_ini_file('../../private/db-config.ini');
+            $config = parse_ini_file('../private/db-config.ini');
             $conn = new mysqli($config['servername'], $config['username'],
                     $config['password'], $config['dbname']);
             // Check connection
@@ -103,7 +103,7 @@
             $conn->close();
             $randomString = generateRandomString(200);
             
-            $config = parse_ini_file('../../private/db-config.ini');
+            $config = parse_ini_file('../private/db-config.ini');
             $conn = new mysqli($config['servername'], $config['username'],
                     $config['password'], $config['dbname']);
             // Check connection
@@ -125,7 +125,7 @@
             }
             $conn->close();
             if($counter ==0){
-                $config = parse_ini_file('../../private/db-config.ini');
+                $config = parse_ini_file('../private/db-config.ini');
                 $conn = new mysqli($config['servername'], $config['username'],
                         $config['password'], $config['dbname']);
                 // Check connection
@@ -146,7 +146,7 @@
                 $conn->close();
             }
             else{
-                $config = parse_ini_file('../../private/db-config.ini');
+                $config = parse_ini_file('../private/db-config.ini');
                 $conn = new mysqli($config['servername'], $config['username'],
                         $config['password'], $config['dbname']);
                 // Check connection

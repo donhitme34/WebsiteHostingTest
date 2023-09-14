@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
     <?php
-    $config = parse_ini_file('../../private/db-config.ini');
+    $config = parse_ini_file('../private/db-config.ini');
     $conn = new mysqli($config['servername'], $config['username'],
             $config['password'], $config['dbname']);
 // Check connection
@@ -122,7 +122,7 @@
             $rating = ($_POST["rating"]);
             $text = ($_POST["text"]);
             // Create database connection.
-            $config = parse_ini_file('../../private/db-config.ini');
+            $config = parse_ini_file('../private/db-config.ini');
             $conn = new mysqli($config['servername'], $config['username'],
                     $config['password'], $config['dbname']);
             // Check connection

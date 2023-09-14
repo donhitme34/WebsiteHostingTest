@@ -14,7 +14,7 @@
         session_start();
         global $currentCategory, $totalProducts, $itemCode;
         $currentCategory = $_GET['category'];
-        $config = parse_ini_file('../../private/db-config.ini');
+        $config = parse_ini_file('../private/db-config.ini');
         $conn = new mysqli($config['servername'], $config['username'],
                 $config['password'], $config['dbname']);
 

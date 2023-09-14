@@ -9,9 +9,9 @@
         include 'nav.php';
     ?>
     <?php
-    use PHPMailer\PHPMailer\PHPMailer;
-    use PHPMailer\PHPMailer\Exception;
-    require 'vendor/autoload.php';
+//    use PHPMailer\PHPMailer\PHPMailer;
+//    use PHPMailer\PHPMailer\Exception;
+//    require 'vendor/autoload.php';
     $email = $errorMsg = "";
     $success = true;
     if (empty($_POST["email"])) {
@@ -94,27 +94,27 @@
         if ($success) {
             saveMemberToDB();
             if ($success) {
-                $mail = new PHPMailer(true);                              
-                $mail->isSMTP();
-                $mail->Host = 'smtp.gmail.com';
-                $mail->SMTPAuth = true;
-                $mail->Username = 'sitictemail@gmail.com';
-                $mail->Password = 'bqxsptogstkgmlef';
-                $mail->SMTPSecure = 'tls';
-                $mail->Port = '587';
-                $mail->setFrom('sitictemail@gmail.com', 'Mailer'); // This is the email your form sends From
-                $mail->addAddress($email, 'Joe User'); // Add a recipient address
-                $mail->isHTML(true);                                  // Set email format to HTML
-                $mail->Subject = 'Verify your account here';
-                $mail->Body = 'Your 6 pin password:' . $promptpin;
+//                $mail = new PHPMailer(true);                              
+//                $mail->isSMTP();
+//                $mail->Host = 'smtp.gmail.com';
+//                $mail->SMTPAuth = true;
+//                $mail->Username = 'sitictemail@gmail.com';
+//                $mail->Password = 'bqxsptogstkgmlef';
+//                $mail->SMTPSecure = 'tls';
+//                $mail->Port = '587';
+//                $mail->setFrom('sitictemail@gmail.com', 'Mailer'); // This is the email your form sends From
+//                $mail->addAddress($email, 'Joe User'); // Add a recipient address
+//                $mail->isHTML(true);                                  // Set email format to HTML
+//                $mail->Subject = 'Verify your account here';
+//                $mail->Body = 'Your 6 pin password:' . $promptpin;
                 session_start();
                 $_SESSION["username"] =$username;
                 session_write_close();     
-                if ($mail->send()) {
-                    //Do nth
-                } else {
-                    echo "Message could not be sent. Mailer Error: " . $mail->ErrorInfo;
-                }
+//                if ($mail->send()) {
+//                    //Do nth
+//                } else {
+//                    echo "Message could not be sent. Mailer Error: " . $mail->ErrorInfo;
+//                }
                 echo "<div class='jumbotron text-center' role='main'>";
                 echo "<h1>Verify your email!</h1>";
                 if (empty($_POST["fname"])) {
@@ -190,7 +190,7 @@
         $authentication2fa = 0;
         $isVerified =0;
         // Create database connection.
-        $config = parse_ini_file('../../private/db-config.ini');
+        $config = parse_ini_file('../private/db-config.ini');
         $conn = new mysqli($config['servername'], $config['username'],
                 $config['password'], $config['dbname']);
         // Check connection

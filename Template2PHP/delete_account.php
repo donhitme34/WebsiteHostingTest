@@ -2,7 +2,7 @@
 session_start();
 
 if (isset($_POST['submit'])) {
-    $config = parse_ini_file('../../private/db-config.ini');
+    $config = parse_ini_file('../private/db-config.ini');
     $conn = new mysqli($config['servername'], $config['username'], $config['password'], $config['dbname']);
 
     if ($conn->connect_error) {

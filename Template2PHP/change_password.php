@@ -12,7 +12,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["currentPassword"]) && 
         $errorMsg = "New passwords do not match.";
         $success = false;
     } else {
-        $config = parse_ini_file('../../private/db-config.ini');
+        $config = parse_ini_file('../private/db-config.ini');
         $conn = new mysqli($config['servername'], $config['username'], $config['password'], $config['dbname']);
         
         // Check connection

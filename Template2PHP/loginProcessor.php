@@ -3,9 +3,9 @@
     /*
      * Helper function to authenticate the login.
      */
-    use PHPMailer\PHPMailer\PHPMailer;
-    use PHPMailer\PHPMailer\Exception;
-    require 'vendor/autoload.php';
+//    use PHPMailer\PHPMailer\PHPMailer;
+//    use PHPMailer\PHPMailer\Exception;
+//    require 'vendor/autoload.php';
 
     $url = 'https://www.google.com/recaptcha/api/siteverify';
     $secret = '6LfJh_AkAAAAAGNUcNNZHSE49xFENe7jJf-1GGIz';
@@ -26,7 +26,9 @@
     curl_close($curl);
 
     $response = json_decode($result, true);
+    
     if ($response['success']) {
+        echo "<h4>a</h4>";
         authenticateUser();
         if ($jumpflag==1){
             ?>
@@ -140,13 +142,14 @@
         echo "<br>";
     }
     function authenticateUser() {
+        echo "<h1>a</h1>";
         global $fname, $lname, $email, $password_hash, $errorMsg,$success, $username, $isverified, $isAdmin;
         global $jumpflag, $userID;
         $username = filter_var($_POST['username'], FILTER_SANITIZE_STRING);
         $password = filter_var($_POST['pwd'], FILTER_SANITIZE_STRING);
         $success = true;
         // Create database connection.
-        $config = parse_ini_file('../../private/db-config.ini');
+        $config = parse_ini_file('../private/db-config.ini');
         $conn = new mysqli($config['servername'], $config['username'],
                 $config['password'], $config['dbname']);
         // Check connection
@@ -187,56 +190,56 @@
                     $errorMsg = "Username not found or password doesn't match...";
                     $success = false;
                 }
-                if ($isverified ==0){
-                    $promptpin = rand(100000, 999999);
-                    session_start();
-                    $_SESSION["username"] =$username;
-                    session_write_close(); 
-                    $config = parse_ini_file('../../private/db-config.ini');
-                    $conn = new mysqli($config['servername'], $config['username'],
-                            $config['password'], $config['dbname']);
-                    // Check connection
-                    if ($conn->connect_error) {
-                        $errorMsg = "Connection failed: " . $conn->connect_error;
-                        $success = false;
-                    } else {
-                        // Prepare the statement:
-                        $stmt = $conn->prepare("UPDATE Ecomm.User SET promptpin = ? WHERE Username = ?");
-                        // Bind & execute the query statement:
-                        $stmt->bind_param("is", $promptpin, $username);
-                        if (!$stmt->execute()) {
-                            $errorMsg = "Execute failed: (" . $stmt->errno . ") " . $stmt->error;
-                            $success = false;
-                        }
-                        $stmt->close();
-                    }
-                    $conn->close();
-                    $mail = new PHPMailer(true);
-                    $mail->isSMTP();
-                    $mail->Host = 'smtp.gmail.com';
-                    $mail->SMTPAuth = true;
-                    $mail->Username = 'sitictemail@gmail.com';
-                    $mail->Password = 'bqxsptogstkgmlef';
-                    $mail->SMTPSecure = 'tls';
-                    $mail->Port = '587';
-                    $mail->setFrom('sitictemail@gmail.com', 'Mailer'); // This is the email your form sends From
-                    $mail->addAddress($email, 'Joe User'); // Add a recipient address
-                    $mail->isHTML(true);                                  // Set email format to HTML
-                    $mail->Subject = 'Verify your account here';
-                    $mail->Body = 'Your 6 pin password:' . $promptpin;
-                    session_start();
-                    $_SESSION["username"] = $username;
-                    session_write_close();
-                    if ($mail->send()) {
-                        //Do nth
-                    } else {
-                        echo "Message could not be sent. Mailer Error: " . $mail->ErrorInfo;
-                    }
-                    $jumpflag =1;
-                }
-                else{
-                    $jumpflag =0;
-                }
+//                if ($isverified ==0){
+//                    $promptpin = rand(100000, 999999);
+//                    session_start();
+//                    $_SESSION["username"] =$username;
+//                    session_write_close(); 
+//                    $config = parse_ini_file('../private/db-config.ini');
+//                    $conn = new mysqli($config['servername'], $config['username'],
+//                            $config['password'], $config['dbname']);
+//                    // Check connection
+//                    if ($conn->connect_error) {
+//                        $errorMsg = "Connection failed: " . $conn->connect_error;
+//                        $success = false;
+//                    } else {
+//                        // Prepare the statement:
+//                        $stmt = $conn->prepare("UPDATE Ecomm.User SET promptpin = ? WHERE Username = ?");
+//                        // Bind & execute the query statement:
+//                        $stmt->bind_param("is", $promptpin, $username);
+//                        if (!$stmt->execute()) {
+//                            $errorMsg = "Execute failed: (" . $stmt->errno . ") " . $stmt->error;
+//                            $success = false;
+//                        }
+//                        $stmt->close();
+//                    }
+//                    $conn->close();
+//                    $mail = new PHPMailer(true);
+//                    $mail->isSMTP();
+//                    $mail->Host = 'smtp.gmail.com';
+//                    $mail->SMTPAuth = true;
+//                    $mail->Username = 'sitictemail@gmail.com';
+//                    $mail->Password = 'bqxsptogstkgmlef';
+//                    $mail->SMTPSecure = 'tls';
+//                    $mail->Port = '587';
+//                    $mail->setFrom('sitictemail@gmail.com', 'Mailer'); // This is the email your form sends From
+//                    $mail->addAddress($email, 'Joe User'); // Add a recipient address
+//                    $mail->isHTML(true);                                  // Set email format to HTML
+//                    $mail->Subject = 'Verify your account here';
+//                    $mail->Body = 'Your 6 pin password:' . $promptpin;
+//                    session_start();
+//                    $_SESSION["username"] = $username;
+//                    session_write_close();
+//                    if ($mail->send()) {
+//                        //Do nth
+//                    } else {
+//                        echo "Message could not be sent. Mailer Error: " . $mail->ErrorInfo;
+//                    }
+//                    $jumpflag =1;
+//                }
+//                else{
+//                    $jumpflag =0;
+//                }
             } 
             else {
                 $errorMsg = "Username not found or password doesn't match...";
