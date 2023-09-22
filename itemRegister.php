@@ -53,15 +53,5 @@
         <?php
         include 'footer.php';
         ?>
-        <script>
-            document.getElementById("uploadForm").addEventListener("submit", function (e) {
-                const imageInput = document.getElementById("itemImage");
-                if (imageInput.files.length === 0) {
-                    e.preventDefault();
-                    alert("Please upload an image.");
-                }
-            });
-        </script>
-
     </body>
 </html>
