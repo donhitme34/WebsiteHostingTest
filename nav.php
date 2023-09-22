@@ -76,7 +76,6 @@ if (isset($_SESSION['user']) && $_SESSION["user"] == true) {
             
           } else {
             echo "<li class='nav-item'><a class='nav-link' style='color:black' href='login.php'>Login</a></li>";
-            echo "<li class='nav-item'><a class='nav-link' style='color:black' href='register.php'>Register</a></li>";
           }
           ?>
         </ul>
