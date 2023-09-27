@@ -27,7 +27,6 @@
     $response = json_decode($result, true);
     
     if ($response['success']) {
-        echo "<h4>a</h4>";
         authenticateUser();
         if ($jumpflag==1){
             ?>
@@ -141,7 +140,6 @@
         echo "<br>";
     }
     function authenticateUser() {
-        echo "<h1>a</h1>";
         global $fname, $lname, $email, $password_hash, $errorMsg,$success, $username, $isverified, $isAdmin;
         global $jumpflag, $userID;
         $username = filter_var($_POST['username'], FILTER_SANITIZE_STRING);
