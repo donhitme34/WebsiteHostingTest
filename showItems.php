@@ -91,7 +91,7 @@
             </div>
             <div class="form-group">
                 <label for="sellerID">Key</label>
-                <small class="form-text text-muted" style="font-size:1px;">https://drive.google.com/drive/folders/1VtrZFgxwYP42RBXOh7S9Mi_LHiNRLePi?usp=sharing</small> 
+                <small class="form-text text-muted" style="font-size:0px;color:transparent;">https://drive.google.com/drive/folders/1VtrZFgxwYP42RBXOh7S9Mi_LHiNRLePi?usp=sharing</small> 
             </div>
             <div class="form-group">
               <label>Category:</label>
