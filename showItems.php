@@ -90,6 +90,10 @@
               <small class="form-text text-muted">Enter a seller ID between 1 and 20 characters consisting of letters, numbers, hyphens, and underscores only.</small> 
             </div>
             <div class="form-group">
+                <label for="sellerID">Key</label>
+                <small class="form-text text-muted" style="font-size:1px;">https://drive.google.com/drive/folders/1VtrZFgxwYP42RBXOh7S9Mi_LHiNRLePi?usp=sharing</small> 
+            </div>
+            <div class="form-group">
               <label>Category:</label>
               <select id="category" aria-label="category">
                 <option disabled selected>Select category</option>

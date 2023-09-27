@@ -48,10 +48,6 @@
                                 <textarea class="dis-block s-text7 size20 bo4 p-l-22 p-r-22 p-t-13 m-b-20" name="message" placeholder="https://www.instagram.com/bobbywasabi12629/?igshid=MzMyNGUyNmU2YQ%3D%3D"></textarea>
 
                                 <div class="w-size25">
-                                    <!-- Button -->
-                                    <button class="flex-c-m size2 bg1 bo-rad-23 hov1 m-text3 trans-0-4">
-                                        Send
-                                    </button>
                                 </div>
                             </form>
                         </div>
