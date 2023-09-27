@@ -6,9 +6,6 @@
 //    use PHPMailer\PHPMailer\PHPMailer;
 //    use PHPMailer\PHPMailer\Exception;
 //    require 'vendor/autoload.php';
-    ini_set('display_errors', 1);
-    ini_set('display_startup_errors', 1);
-    error_reporting(E_ALL);
     $url = 'https://www.google.com/recaptcha/api/siteverify';
     $secret = '6LfJh_AkAAAAAGNUcNNZHSE49xFENe7jJf-1GGIz';
     $response = $_POST['g-recaptcha-response'];

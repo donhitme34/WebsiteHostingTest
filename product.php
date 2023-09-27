@@ -22,10 +22,6 @@
             die('Connection Failed: ' . $conn->connect_error);
         }
         
-
-        ini_set('display_errors', 1);
-        error_reporting(E_ALL);
-
         if (!empty($_GET["action"])) {
             switch ($_GET["action"]) {
                 case "add":

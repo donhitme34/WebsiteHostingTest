@@ -1,7 +1,4 @@
 <?php
-    ini_set('display_errors', 1);
-    ini_set('display_startup_errors', 1);
-    error_reporting(E_ALL);
 if (isset($_SESSION['user']) && $_SESSION["user"] == true) {
     global $email, $address, $wallet;
     $config = parse_ini_file('../private/db-config.ini');

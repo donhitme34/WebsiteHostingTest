@@ -60,8 +60,6 @@
                             break;
                     }
                 }
-                ini_set('display_errors', 1);
-                error_reporting(E_ALL);
                 ?>
 
                 <form method="post" action="product-detail.php?action=add&idproduct=<?= $row1['idproduct'] ?>">
