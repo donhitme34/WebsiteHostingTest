@@ -126,32 +126,11 @@
                     <button id="editButton" class="btn btn-primary" onclick="toggleEditProfile()">Edit Profile</button>
                     <a href="#" class="btn btn-info" onclick="showEditPasswordForm()">Change password</a>
                     <button id="saveButton" class="btn btn-success d-none" form="profileUpdateForm" type="submit" name="submit">Save Changes</button>
-                    <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteConfirmModal">Delete Account</button>
                     <a href="logout.php" class="btn btn-secondary">Logout</a>
                 </div>
             </div>
         </div>
         
-        <!-- Delete Confirmation Modal -->
-        <div class="modal fade" id="deleteConfirmModal" tabindex="-1" aria-labelledby="deleteConfirmModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h1 class="modal-title" id="deleteConfirmModalLabel">Confirm Deletion</h1>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                        Are you sure you want to delete your account?
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
-                        <form method="POST" action="delete_account.php">
-                            <button type="submit" name="submit" class="btn btn-danger">Yes</button>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
         </main>
         <br>
     <?php 

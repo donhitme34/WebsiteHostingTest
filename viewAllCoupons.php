@@ -39,7 +39,6 @@
                         <td><?= $row["discount"] ?></td>
                         <td><?= $row["status"] ?></td>
                         <td><button class="btn btn-primary" style="height:40px; color: black" onclick="couponEditForm('<?= $row['coupon_id'] ?>')">Edit</button></td>
-                        <td><button class="btn btn-danger" style="height:40px; color: black" onclick="couponDelete('<?= $row['coupon_id'] ?>')">Delete</button></td>
                     </tr>
                     <?php
                     $count = $count + 1;

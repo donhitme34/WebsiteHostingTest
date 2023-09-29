@@ -42,7 +42,6 @@
             <td><?=$row["emailaddress"]?></td>
             <td><?=$row["homeAddress"]?></td>
             <td><button class="btn btn-primary" style="height:40px;color: black" onclick="userEditForm('<?=$row['idUser']?>')">Edit</button></td>
-            <td><button class="btn btn-danger" style="height:40px;color: black" onclick="userDelete('<?=$row['idUser']?>')">Delete</button></td>
           </tr>
           <?php
                   $count=$count+1;

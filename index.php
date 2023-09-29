@@ -115,13 +115,6 @@
                     "					<i class=\"icon-wishlist icon_heart dis-none\" aria-hidden=\"true\"></i>" .
                     "				</a>" .
                     "				<div class=\"block2-btn-addcart w-size1 trans-0-4\">" .
-                    "					<!-- Button -->" .
-//                    "					<button name=\"action\" type=\"submit\" class=\"flex-c-m size1 bg4 bo-rad-23 hov1 s-text1 trans-0-4\" aria-label=\"submit\">" .
-//                    "						Add to Cart" .
-//                    "					</button><br>" .
-                    "                                       <a href='delete_product.php?idproduct=" . $itemCode . "' class='flex-c-m size1 bg4 bo-rad-23 hov1 s-text1 trans-0-4'>" .
-                    "                                               Delete" .
-                    "                                       </a>" .
                     "				</div>" .
                     "			</div>" .
                     "		</div>" .

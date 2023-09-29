@@ -43,7 +43,6 @@
       <td><?=$row["price"]?></td>
       <td><?=$row["sellerID"]?></td>
       <td><button class="btn btn-primary" style="height:40px" onclick="itemEditForm('<?=$row['idproduct']?>')">Edit</button></td>
-      <td><button class="btn btn-danger" style="height:40px" onclick="itemDelete('<?=$row['idproduct']?>')">Delete</button></td>
       </tr>
       <?php
             $count=$count+1;
