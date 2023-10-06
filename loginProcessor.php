@@ -6,11 +6,36 @@
 //    use PHPMailer\PHPMailer\PHPMailer;
 //    use PHPMailer\PHPMailer\Exception;
 //    require 'vendor/autoload.php';
+    if (isset($_SESSION['failed_attempts']) && $_SESSION['failed_attempts'] >= 3 
+        && (time() - $_SESSION['last_failed_attempt'] < 600)) {
+        $errorMsg = "Too many failed attempts. Please wait for 10 minutes before trying again.";
+        include 'header.php';
+        ?>
+        <body>
+        <!-- Header -->
+        <?php 
+            include 'nav.php';
+        echo "<main class='container'>";
+        echo "<h1>Oops!</h1>";
+        echo "<p style='color:black'>" . $errorMsg . "</p>";
+        echo "<a href='login.php' class='btn btn-warning'>Return to Login</a>";
+        echo "</main>";
+        include 'footer.php';
+        exit();  // Stop further processing
+    }   
+    if (!isset($_SESSION)) {
+            session_start();
+    }
+    if (!isset($_SESSION['failed_attempts'])) {
+        $_SESSION['failed_attempts'] = 0;
+    }
+    if (!isset($_SESSION['last_failed_attempt'])) {
+        $_SESSION['last_failed_attempt'] = 0;
+    }
     $url = 'https://www.google.com/recaptcha/api/siteverify';
     $secret = '6LfJh_AkAAAAAGNUcNNZHSE49xFENe7jJf-1GGIz';
     $response = $_POST['g-recaptcha-response'];
     $remoteip = $_SERVER['REMOTE_ADDR'];
-    
     $curl = curl_init();
     curl_setopt($curl, CURLOPT_URL, $url);
     curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
@@ -27,6 +52,17 @@
     $response = json_decode($result, true);
     
     if ($response['success']) {
+        if (isset($_SESSION['failed_attempts']) && $_SESSION['failed_attempts'] >= 3
+            && (time() - $_SESSION['last_failed_attempt'] < 600)) {
+            $errorMsg = "Too many failed attempts. Please wait for 10 minutes before trying again.";
+            // Display your error message and exit, similar to your previous code
+            echo "<main class='container'>";
+            echo "<h1>Oops!</h1>";
+            echo "<p style='color:black'>" . $errorMsg . "</p>";
+            echo "<a href='login.php' class='btn btn-warning'>Return to Login</a>";
+            echo "</main>";
+            exit();  // Stop further processing
+        }
         authenticateUser();
         if ($jumpflag==1){
             ?>
@@ -104,12 +140,14 @@
             <?php
             include 'header.php';
             ?>
-                        <body>
-                            <!-- Header -->
+            <body>
+                <!-- Header -->
             <?php
             include 'nav.php';
             ?>
             <?php
+            $_SESSION['failed_attempts'] += 1;
+            $_SESSION['last_failed_attempt'] = time();
             echo "<main class='container'>";
             echo "<h1>Oops!</h1>";
             echo "<h2>The following input errors were detected:</h2>";
@@ -119,7 +157,8 @@
             echo "<br>";
         }
     } else {
-        
+        $_SESSION['failed_attempts'] += 1;
+        $_SESSION['last_failed_attempt'] = time();
         ?>
         <!DOCTYPE html>
         <html lang="en">
@@ -184,59 +223,16 @@
                 if (!password_verify($_POST["pwd"], $password_hash)) {
                 // Don't be too specific with the error message - hackers don't
                 // need to know which one they got right or wrong. :)
+//                    $_SESSION['failed_attempts'] += 1;
+//                    $_SESSION['last_failed_attempt'] = time();
                     $errorMsg = "Username not found or password doesn't match...";
                     $success = false;
                 }
-//                if ($isverified ==0){
-//                    $promptpin = rand(100000, 999999);
-//                    session_start();
-//                    $_SESSION["username"] =$username;
-//                    session_write_close(); 
-//                    $config = parse_ini_file('../private/db-config.ini');
-//                    $conn = new mysqli($config['servername'], $config['username'],
-//                            $config['password'], $config['dbname']);
-//                    // Check connection
-//                    if ($conn->connect_error) {
-//                        $errorMsg = "Connection failed: " . $conn->connect_error;
-//                        $success = false;
-//                    } else {
-//                        // Prepare the statement:
-//                        $stmt = $conn->prepare("UPDATE Ecomm.User SET promptpin = ? WHERE Username = ?");
-//                        // Bind & execute the query statement:
-//                        $stmt->bind_param("is", $promptpin, $username);
-//                        if (!$stmt->execute()) {
-//                            $errorMsg = "Execute failed: (" . $stmt->errno . ") " . $stmt->error;
-//                            $success = false;
-//                        }
-//                        $stmt->close();
-//                    }
-//                    $conn->close();
-//                    $mail = new PHPMailer(true);
-//                    $mail->isSMTP();
-//                    $mail->Host = 'smtp.gmail.com';
-//                    $mail->SMTPAuth = true;
-//                    $mail->Username = 'sitictemail@gmail.com';
-//                    $mail->Password = 'bqxsptogstkgmlef';
-//                    $mail->SMTPSecure = 'tls';
-//                    $mail->Port = '587';
-//                    $mail->setFrom('sitictemail@gmail.com', 'Mailer'); // This is the email your form sends From
-//                    $mail->addAddress($email, 'Joe User'); // Add a recipient address
-//                    $mail->isHTML(true);                                  // Set email format to HTML
-//                    $mail->Subject = 'Verify your account here';
-//                    $mail->Body = 'Your 6 pin password:' . $promptpin;
-//                    session_start();
-//                    $_SESSION["username"] = $username;
-//                    session_write_close();
-//                    if ($mail->send()) {
-//                        //Do nth
-//                    } else {
-//                        echo "Message could not be sent. Mailer Error: " . $mail->ErrorInfo;
-//                    }
-//                    $jumpflag =1;
-//                }
-//                else{
-//                    $jumpflag =0;
-//                }
+                else {
+                    // Reset failed attempts on successful login
+                    $_SESSION['failed_attempts'] = 0;
+                    $_SESSION['last_failed_attempt'] = 0;
+                }
             } 
             else {
                 $errorMsg = "Username not found or password doesn't match...";
